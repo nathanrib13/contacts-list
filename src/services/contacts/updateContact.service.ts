@@ -12,7 +12,7 @@ import {
 } from "../../interfaces/users.interfaces";
 import { AppError } from "../../erros";
 
-const updateUserService = async (
+const updateContactService = async (
   userData: IUserRequest,
   userId: number
 ): Promise<IUserReturn> => {
@@ -31,4 +31,4 @@ const updateUserService = async (
   return userUpdated;
 };
 
-export default updateUserService;
+export default updateContactService;

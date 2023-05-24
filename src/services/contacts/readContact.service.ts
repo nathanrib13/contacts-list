@@ -5,7 +5,7 @@ import { IReadUserReturn } from "../../interfaces/users.interfaces";
 import { readUserSchemaReturn } from "../../schemas/users.schemas";
 import { AppError } from "../../erros";
 
-const readUserService = async (userID: number): Promise<IReadUserReturn> => {
+const readContactService = async (userID: number): Promise<IReadUserReturn> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const findUser = await userRepository.findOne({
@@ -28,4 +28,4 @@ const readUserService = async (userID: number): Promise<IReadUserReturn> => {
   return userWithContacts;
 };
 
-export default readUserService;
+export default readContactService;

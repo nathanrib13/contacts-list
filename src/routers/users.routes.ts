@@ -1,16 +1,16 @@
 import { Router } from "express";
 import {
   createUserController,
-  // updateUserController,
-  // deleteUserController,
-  // readAllUsersController,
+  updateUserController,
+  deleteUserController,
+  readUserController,
 } from "../controllers/users.controller";
 
 const usersRoutes = Router();
 
 usersRoutes.post("", createUserController);
-usersRoutes.get("");
-usersRoutes.patch("/:id");
-usersRoutes.delete("/:id");
+usersRoutes.get("/:id", readUserController);
+usersRoutes.patch("/:id", updateUserController);
+usersRoutes.delete("/:id", deleteUserController);
 
 export { usersRoutes };
