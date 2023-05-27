@@ -18,15 +18,17 @@ const createContactService = async (
   const contacRepository: Repository<Contact> =
     AppDataSource.getRepository(Contact);
 
-  const contactToFind = await contacRepository
-    .createQueryBuilder("contact")
-    .where("contact.email = :email", { email: contactData.email })
-    .andWhere("contact.phone = :phone", { phone: contactData.phone })
-    .getOne();
+  // const contactToFind = await contacRepository
+  //   .createQueryBuilder("contact")
+  //   .where("contact.email = :email", { email: contactData.email })
+  //   .andWhere("contact.phone = :phone", { phone: contactData.phone })
+  //   .getOne();
 
-  if (contactToFind) {
-    throw new AppError("this contact already exists", 409);
-  }
+  // if (contactToFind) {
+  //   throw new AppError("this contact already exists", 409);
+  // }
+
+  //HASH DA SENHA
 
   const user: User | null = await userRepository.findOneBy({
     id: userID,
