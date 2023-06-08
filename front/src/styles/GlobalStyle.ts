@@ -33,6 +33,9 @@ export default createGlobalStyle`
       font-size: 62.5%; // root font-size: 10px;
     }
   }
+  li, ul, ol {
+    list-style: none  ;
+  }
   
   * {
     margin:0;
