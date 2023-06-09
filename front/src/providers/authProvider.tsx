@@ -2,6 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { loginData } from "../pages/login/validator";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { Contact } from "../pages/dashboard";
 
 interface IAuthProviderProps {
   children: ReactNode;
@@ -10,6 +11,16 @@ interface IAuthProviderProps {
 interface IAuthContextValues {
   signIn: (data: loginData) => void;
   loading: boolean;
+  userData: IUserData | null;
+}
+
+export interface IUserData {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  createdAt: string;
+  contacts: Contact[];
 }
 
 const AuthContext = createContext<IAuthContextValues>({} as IAuthContextValues);
@@ -17,17 +28,30 @@ const AuthContext = createContext<IAuthContextValues>({} as IAuthContextValues);
 const AuthProvider = ({ children }: IAuthProviderProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const token = localStorage.getItem("contact-list:token");
+  const [userData, setUserData] = useState<IUserData | null>(null);
 
-    if (!token) {
-      setLoading(false);
-      return;
+  useEffect(() => {
+    async function loadUser() {
+      const token = localStorage.getItem("contact-list:token");
+      if (token) {
+        try {
+          api.defaults.headers.common.Authorization = `Bearer ${token}`;
+          const response = await api.get("/users");
+          console.log(response);
+          setUserData(response.data);
+          navigate("/dashboard");
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        setLoading(false);
+      }
     }
 
-    api.defaults.headers.common.authorization = `Bearer ${token}`;
-    setLoading(false);
-  }, []);
+    loadUser();
+  }, [navigate]);
 
   const signIn = async (data: loginData) => {
     try {
@@ -35,7 +59,6 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
       const { token } = response.data;
       api.defaults.headers.common.authorization = `Bearer ${token}`;
       localStorage.setItem("contact-list:token", token);
-
       navigate("dashboard");
     } catch (error) {
       console.log(error);
@@ -43,7 +66,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ signIn, loading }}>
+    <AuthContext.Provider value={{ signIn, loading, userData }}>
       {children}
     </AuthContext.Provider>
   );

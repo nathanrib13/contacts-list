@@ -6,10 +6,6 @@ import {
   IContactRequest,
   IContactReturn,
 } from "../../interfaces/contacts.interfaces";
-import {
-  contactSchemaReturn,
-  contactUpdateSchema,
-} from "../../schemas/contacts.schemas";
 
 const updateContactService = async (
   contactData: IContactRequest,
@@ -18,17 +14,22 @@ const updateContactService = async (
   const contactRepository: Repository<Contact> =
     AppDataSource.getRepository(Contact);
 
-  const contactToUpdate = await contactRepository.findOneBy({ id: contactId });
-  const updateResquested: any = contactUpdateSchema.parse(contactData);
+  const contactToUpdate = await contactRepository.findOne({
+    where: {
+      id: contactId,
+    },
+  });
+  if (!contactToUpdate) {
+    throw new AppError("Contact not foun!", 404);
+  }
 
   const contact = contactRepository.create({
     ...contactToUpdate,
-    ...updateResquested,
+    ...contactData,
   });
   await contactRepository.save(contact);
-  const contactUpdated = contactSchemaReturn.parse(contact);
 
-  return contactUpdated;
+  return contact!;
 };
 
 export default updateContactService;

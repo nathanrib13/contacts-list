@@ -6,9 +6,9 @@ import deleteContactService from "../services/contacts/deleteContact.service";
 
 const createContactController = async (req: Request, res: Response) => {
   const contactData = req.body;
-  const contactId = parseInt(req.params.id);
+  const userId = parseInt(req.params.id);
 
-  const contactCreated = await createContactService(contactData, contactId);
+  const contactCreated = await createContactService(contactData, userId);
 
   return res.status(201).json(contactCreated);
 };
