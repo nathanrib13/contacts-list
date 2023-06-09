@@ -6,6 +6,7 @@ import ContactCard from "../../components/contactCard/ContactCard";
 import CreateNewContact from "../../components/newContact/NewContact";
 import Modal from "../../components/modalContact/ModalContact";
 import { AuthContext } from "../../providers/authProvider";
+import { useNavigate } from "react-router-dom";
 
 export interface User {
   name: string;
@@ -24,6 +25,7 @@ export interface Contact {
 }
 const Dashboard = () => {
   const { userData } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [contacts, setContacts] = useState<Contact[]>(userData!.contacts);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -49,6 +51,11 @@ const Dashboard = () => {
     setModalOpen(false);
   };
 
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
   if (!userData) {
     return <div>Carregando...</div>;
   }
@@ -69,7 +76,7 @@ const Dashboard = () => {
           title="Editar Usuário"
         />
       </div>
-
+      <button onClick={logout}>Logout</button>
       <CreateNewContact />
       <section>
         {contacts.map((contact: Contact) => (

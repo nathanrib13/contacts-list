@@ -2,11 +2,30 @@ import styled from "styled-components";
 
 const Container = styled.section`
   padding: 50px;
-  background-color: #ffcc00;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+
+  > button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #000;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    color: #ffcc00;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+
+    &:hover {
+      background-color: white;
+    }
+  }
 
   > div:first-child {
     background-color: #fff;
