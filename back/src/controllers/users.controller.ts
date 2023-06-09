@@ -13,7 +13,7 @@ const createUserController = async (req: Request, res: Response) => {
 };
 
 const readUserController = async (req: Request, res: Response) => {
-  const userID = parseInt(req.params.id);
+  const userID = req.user.id;
   const allUsers = await readUserService(userID);
 
   res.json(allUsers);

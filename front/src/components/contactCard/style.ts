@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ContactCardStyle = styled.section`
-  width: 600px;
+  width: 70%;
   height: 150px;
   background-color: #fff;
   padding: 20px;

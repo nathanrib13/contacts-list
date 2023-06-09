@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import Container from "./style";
-import ContactCard from "../../components/ContactCard";
+import ContactCard from "../../components/contactCard/ContactCard";
+import CreateNewContact from "../../components/newContact/NewContact";
+import Modal from "../../components/modalContact/ModalContact";
+import { AuthContext } from "../../providers/authProvider";
 
-interface User {
+export interface User {
   name: string;
   email: string;
   phone: string;
@@ -19,26 +23,15 @@ export interface Contact {
   createdAt: string;
 }
 const Dashboard = () => {
-  const [user, setUser] = useState<User>();
-  const [contacts, setContacts] = useState<Contact[]>([]);
+  const { userData } = useContext(AuthContext);
 
-  useEffect(() => {
-    (async () => {
-      const response = await api.get(`users/${11}`);
-      setUser(response.data);
-    })();
-  }, []);
-
-  useEffect(() => {
-    if (user) {
-      setContacts(user.contacts);
-    }
-  }, [user]);
+  const [contacts, setContacts] = useState<Contact[]>(userData!.contacts);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleDeleteContact = async (contactId: number) => {
     try {
       const response = await api.delete(`contacts/${contactId}`);
-      if (response.status === 200) {
+      if (response.status === 204) {
         setContacts((prevContacts) =>
           prevContacts.filter((contact) => contact.id !== contactId)
         );
@@ -48,16 +41,36 @@ const Dashboard = () => {
     }
   };
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  if (!userData) {
+    return <div>Carregando...</div>;
+  }
+
   return (
     <Container>
       <div>
-        <h2>Bem vindo, {user?.name}</h2>
+        <h2>Bem vindo, {userData?.name}</h2>
         <ul>
-          <li>Email: {user?.email}</li>
-          <li>Telefone: {user?.phone}</li>
-          <li>Criado em: {user?.createdAt}</li>
+          <li>Email: {userData?.email}</li>
+          <li>Telefone: {userData?.phone}</li>
+          <li>Criado em: {userData?.createdAt}</li>
         </ul>
+        <p onClick={openModal}>🖊️</p>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          title="Editar Usuário"
+        />
       </div>
+
+      <CreateNewContact />
       <section>
         {contacts.map((contact: Contact) => (
           <ContactCard

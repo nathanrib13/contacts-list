@@ -19,12 +19,7 @@ usersRoutes.post(
   ensureEmailIsUniqueMiddleware,
   createUserController
 );
-usersRoutes.get(
-  "/:id",
-  ensureTokenIsValidMiddleware,
-  ensureUserExistsMiddeware,
-  readUserController
-);
+usersRoutes.get("", ensureTokenIsValidMiddleware, readUserController);
 usersRoutes.patch(
   "/:id",
   ensureTokenIsValidMiddleware,
