@@ -1,8 +1,8 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { loginData } from "../pages/login/validator";
+import { loginData } from "./validator";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
-import { Contact } from "../pages/dashboard";
+import { Contact } from "../pages/Dashboard";
 
 interface IAuthProviderProps {
   children: ReactNode;
@@ -37,7 +37,6 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
         try {
           api.defaults.headers.common.Authorization = `Bearer ${token}`;
           const response = await api.get("/users");
-          console.log(response);
           setUserData(response.data);
           navigate("/dashboard");
         } catch (error) {

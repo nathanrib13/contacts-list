@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import api from "../../services/api";
-import Container from "./style";
 import ContactCard from "../../components/contactCard/ContactCard";
 import CreateNewContact from "../../components/newContact/NewContact";
 import Modal from "../../components/modalContact/ModalContact";
 import { AuthContext } from "../../providers/authProvider";
 import { useNavigate } from "react-router-dom";
+import Container from "./style";
 
 export interface User {
   name: string;
@@ -79,13 +79,20 @@ const Dashboard = () => {
       <button onClick={logout}>Logout</button>
       <CreateNewContact />
       <section>
-        {contacts.map((contact: Contact) => (
-          <ContactCard
-            key={contact.id}
-            contact={contact}
-            onDeleteContact={handleDeleteContact}
-          />
-        ))}
+        {contacts.length === 0 ? (
+          <div>
+            <h2>Nenhum contato disponível.</h2>
+            <p>Cadastre um novo conta em sua lista</p>
+          </div>
+        ) : (
+          contacts.map((contact: Contact) => (
+            <ContactCard
+              key={contact.id}
+              contact={contact}
+              onDeleteContact={handleDeleteContact}
+            />
+          ))
+        )}
       </section>
     </Container>
   );

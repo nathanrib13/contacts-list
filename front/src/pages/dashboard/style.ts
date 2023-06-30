@@ -59,6 +59,27 @@ const Container = styled.section`
     gap: 15px;
     color: #fff;
     padding-top: 20px;
+   
+
+    >div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 38px;
+    border-radius: 8px;
+
+    > h2 {
+      color: black;
+      margin-bottom: 12px;
+    }
+     >p {
+      color: #000;
+    }
+  }
+
+
   }
 `;
 

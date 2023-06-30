@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { ModalContent, ModalWrapper } from "./style";
 import api from "../../services/api";
 import { AuthContext } from "../../providers/authProvider";
+import { Toaster, toast } from "sonner";
 
 interface ModalProps {
   isOpen: boolean;
@@ -22,13 +23,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
     let response;
     if (title == "Novo Contato") {
       response = await api.post(`/contacts/${userData?.id}`, dataToSend);
+      toast.success("contato cadastrado com sucesso");
     } else {
       response = await api.patch(`/users/${userData?.id}`, dataToSend);
+      toast.success(response?.status);
     }
-
-    alert(response?.status);
-
-    onClose();
+    setTimeout(() => {
+      onClose();
+    }, 1500);
   };
 
   return (
@@ -40,24 +42,24 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
             Nome:
             <input
               type="text"
-              value={name}
               onChange={(e) => setName(e.target.value)}
+              placeholder="Maria"
             />
           </label>
           <label>
             Telefone:
             <input
               type="text"
-              value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              placeholder="(21)980974644"
             />
           </label>
           <label>
             Email:
             <input
               type="text"
-              value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="maria@mail.com"
             />
           </label>
           <button type="submit">Enviar</button>
@@ -65,6 +67,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
             Fechar
           </button>
         </form>
+        <Toaster position="top-center" />
       </ModalContent>
     </ModalWrapper>
   );

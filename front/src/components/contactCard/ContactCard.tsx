@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Contact } from "../../pages/dashboard";
+import { Contact } from "../../pages/Dashboard";
 import { ContactCardStyle } from "./style";
 import ModalOnlyContact from "../modalContact/ModalContact copy";
 

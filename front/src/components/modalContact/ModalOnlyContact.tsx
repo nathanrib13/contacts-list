@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ModalContent, ModalWrapper } from "./style";
 import api from "../../services/api";
-import { Contact } from "../../pages/dashboard";
+import { Contact } from "../../pages/Dashboard";
 
 interface ModalProps {
   isOpen: boolean;

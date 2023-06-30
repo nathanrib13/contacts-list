@@ -13,7 +13,6 @@ const Container = styled.main`
     color: black;
     margin-bottom: 15px;
   }
-
   form {
     background-color: white;
     padding: 25px;
@@ -42,7 +41,7 @@ const Container = styled.main`
     }
 
     span{
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      
       align-self: center;
       margin: 18px 0px;
     }
