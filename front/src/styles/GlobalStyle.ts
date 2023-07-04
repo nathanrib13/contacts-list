@@ -25,6 +25,7 @@ export default createGlobalStyle`
     padding: 0;
     outline:0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   body,html{
@@ -33,7 +34,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #ffcc00;
+   
     -webkit-font-smoothing: antialiased;
 
     overflow-x: hidden;

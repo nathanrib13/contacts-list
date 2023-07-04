@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Contact } from "../../pages/Dashboard";
 import { ContactCardStyle } from "./style";
-import ModalOnlyContact from "../modalContact/ModalContact copy";
+import ModalOnlyContact from "../modalContact/ModalOnlyContact";
 
 const ContactCard = ({
   contact,
@@ -26,21 +26,11 @@ const ContactCard = ({
   return (
     <ContactCardStyle>
       <ul>
-        <li>Name: {contact.name}</li>
-        <li>Email: {contact.email}</li>
-        <li>Phone: {contact.phone}</li>
+        <li> {contact.name}</li>
+        <li> Work</li>
+        {/* <li>Email: {contact.email}</li>
+        <li>Phone: {contact.phone}</li> */}
       </ul>
-
-      <div>
-        <button onClick={openModal}>Editar</button>
-        <button onClick={handleDeleteContact}>Excluir</button>
-        <ModalOnlyContact
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          title="Editar Contato"
-          data={contact}
-        />
-      </div>
     </ContactCardStyle>
   );
 };

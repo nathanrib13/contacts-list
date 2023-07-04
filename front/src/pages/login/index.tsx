@@ -15,24 +15,28 @@ const Login = () => {
   const { signIn } = useAuth();
   return (
     <Container>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit(signIn)}>
-        <label htmlFor="">Email</label>
-        <input type="email" id="email" {...register("email")} />
-        <label htmlFor="">Senha</label>
-        <input type="password" id="password" {...register("password")} />
+      <div></div>
 
-        <button type="submit">Entrar</button>
-        <span> Ainda nao possui uma conta?</span>
-        <button
-          onClick={() => {
-            navigate("/register");
-          }}
-        >
-          {" "}
-          Registre grátis
-        </button>
-      </form>
+      <section>
+        <form onSubmit={handleSubmit(signIn)}>
+          <h1>Login</h1>
+          <label htmlFor="">Email</label>
+          <input type="email" id="email" {...register("email")} />
+          <label htmlFor="">Senha</label>
+          <input type="password" id="password" {...register("password")} />
+
+          <button type="submit">Entrar</button>
+          <span> Ainda nao possui uma conta?</span>
+          <button
+            onClick={() => {
+              navigate("/register");
+            }}
+          >
+            {" "}
+            Registre grátis
+          </button>
+        </form>
+      </section>
     </Container>
   );
 };

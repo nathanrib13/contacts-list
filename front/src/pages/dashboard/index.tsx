@@ -7,6 +7,8 @@ import Modal from "../../components/modalContact/ModalContact";
 import { AuthContext } from "../../providers/authProvider";
 import { useNavigate } from "react-router-dom";
 import Container from "./style";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 export interface User {
   name: string;
@@ -51,39 +53,46 @@ const Dashboard = () => {
     setModalOpen(false);
   };
 
-  const logout = () => {
-    localStorage.clear();
-    navigate("/");
-  };
-
   if (!userData) {
     return <div>Carregando...</div>;
   }
 
   return (
     <Container>
+      <Header />
       <div>
-        <h2>Bem vindo, {userData?.name}</h2>
-        <ul>
-          <li>Email: {userData?.email}</li>
-          <li>Telefone: {userData?.phone}</li>
-          <li>Criado em: {userData?.createdAt}</li>
-        </ul>
-        <p onClick={openModal}>🖊️</p>
-        <Modal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          title="Editar Usuário"
+        <img
+          src="https://img.freepik.com/fotos-premium/pessoa-usando-telefone-celular-sobre-fundo-isolado_1368-174417.jpg?w=2000"
+          alt=""
         />
-      </div>
-      <button onClick={logout}>Logout</button>
-      <CreateNewContact />
-      <section>
-        {contacts.length === 0 ? (
+        <div>
           <div>
+            <h2>Bem vindo, {userData?.name}</h2>
+            <p onClick={openModal}>🖊️</p>
+          </div>
+          <ul>
+            <li>Email: {userData?.email}</li>
+            <li>Telefone: {userData?.phone}</li>
+            <li>Criado em: {userData?.createdAt}</li>
+          </ul>
+
+          <Modal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            title="Editar Usuário"
+          />
+        </div>
+      </div>
+      <section>
+        <div>
+          <h2>ALL CONTACTS</h2>
+          <button> + New Contact</button>
+        </div>
+        {contacts.length === 0 ? (
+          <section>
             <h2>Nenhum contato disponível.</h2>
             <p>Cadastre um novo conta em sua lista</p>
-          </div>
+          </section>
         ) : (
           contacts.map((contact: Contact) => (
             <ContactCard
@@ -94,6 +103,7 @@ const Dashboard = () => {
           ))
         )}
       </section>
+      <Footer />
     </Container>
   );
 };

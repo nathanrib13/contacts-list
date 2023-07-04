@@ -1,74 +1,99 @@
 import styled from "styled-components";
 
 const Container = styled.section`
-  padding: 50px;
-
+  background-color: #004AAD;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+ 
 
-  > button {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: #000;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    color: #ffcc00;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 8px;
 
-    &:hover {
-      background-color: white;
-    }
+> div {
+  width: 75%;
+  margin: 22px 55px;
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;
+
+  > img {
+    max-width: 270px;
+    border-radius: 760px;
   }
-
-  > div:first-child {
+  > div { 
     background-color: #fff;
-    padding: 50px;
-    color: black;
+    color: black;   
+    padding: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    width: 70%;
+    width: 72%;
     align-items: center;
     border-radius: 12px;
-    margin-bottom: 25px;
     position: relative;
-    > ul {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    > p {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
+    
+  > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    > h2 {
+      font-weight: 600;
     }
   }
-
-  > section {
+  > ul {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    color: #fff;
-    padding-top: 20px;
+    gap: 12px;
+      > li {
+        padding: 6px;
+        border-radius: 4px;
+        width: 100%;
+        background-color: rgba(60,60,60,0.1)
+      }
+    }
    
+  }
+}
 
-    >div {
+
+  > section {
+    width: 75%;
+    background-color: #fff;
+    border-radius: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: #fff;
-    padding: 38px;
-    border-radius: 8px;
+    color: #fff;
+    padding: 20px;
+    gap: 14px;
+    
+
+   
+      >div {
+        width: 100%;
+        color: #000;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        > h2 {
+      font-weight: 600;
+    }
+    > button  {
+
+      font-family: Arial, Helvetica, sans-serif;
+    background-color: #004AAD;
+    color: white;
+    border-radius: 12px;
+    border:  none;
+    padding: 6px;
+
+    }
+      }
+  
+
+
 
     > h2 {
       color: black;
@@ -79,8 +104,6 @@ const Container = styled.section`
     }
   }
 
-
-  }
 `;
 
 export default Container;
