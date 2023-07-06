@@ -9,53 +9,7 @@ const Container = styled.section`
  
 
 
-> div {
-  width: 75%;
-  margin: 22px 55px;
-  display: flex;
-  justify-content: space-between;  
-  align-items: center;
 
-  > img {
-    max-width: 270px;
-    border-radius: 760px;
-  }
-  > div { 
-    background-color: #fff;
-    color: black;   
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 72%;
-    align-items: center;
-    border-radius: 12px;
-    position: relative;
-    
-  > div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    > h2 {
-      font-weight: 600;
-    }
-  }
-  > ul {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-      > li {
-        padding: 6px;
-        border-radius: 4px;
-        width: 100%;
-        background-color: rgba(60,60,60,0.1)
-      }
-    }
-   
-  }
-}
 
 
   > section {

@@ -43,13 +43,16 @@ export default createGlobalStyle`
   body, input, button, textarea {
     font-family: 'Inter';
     font-size: 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6, strong{
     font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   button {
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
   }
 `;

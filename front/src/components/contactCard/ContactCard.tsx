@@ -2,17 +2,9 @@ import { useState } from "react";
 import { Contact } from "../../pages/Dashboard";
 import { ContactCardStyle } from "./style";
 import ModalOnlyContact from "../modalContact/ModalOnlyContact";
+import ModalViewContact from "../modalViewContact/ModalContact";
 
-const ContactCard = ({
-  contact,
-  onDeleteContact,
-}: {
-  contact: Contact;
-  onDeleteContact: (contactId: number) => void;
-}) => {
-  const handleDeleteContact = () => {
-    onDeleteContact(contact.id);
-  };
+const ContactCard = ({ contact }: { contact: Contact }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -25,7 +17,12 @@ const ContactCard = ({
 
   return (
     <ContactCardStyle>
-      <ul>
+      <ModalViewContact
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        contact={contact}
+      />
+      <ul onClick={openModal}>
         <li> {contact.name}</li>
         <li> Work</li>
         {/* <li>Email: {contact.email}</li>

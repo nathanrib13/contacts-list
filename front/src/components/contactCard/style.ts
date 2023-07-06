@@ -14,9 +14,11 @@ const ContactCardStyle = styled.section`
     justify-content: space-between;
     background-color: rgba(60,60,60,0.1);
     padding: 12px 52px;
+    cursor: pointer;
    
     > li {
       color: black;
+      
     }
   }
 `;

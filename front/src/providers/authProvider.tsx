@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { loginData } from "./validator";
 import api from "../services/api";
@@ -12,6 +14,8 @@ interface IAuthContextValues {
   signIn: (data: loginData) => void;
   loading: boolean;
   userData: IUserData | null;
+  contacts: any;
+  setContacts: any;
 }
 
 export interface IUserData {
@@ -29,6 +33,13 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState<IUserData | null>(null);
+  const [contacts, setContacts] = useState<Contact[]>([]);
+
+  useEffect(() => {
+    if (userData) {
+      setContacts(userData.contacts);
+    }
+  }, [userData]);
 
   useEffect(() => {
     async function loadUser() {
@@ -65,7 +76,15 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ signIn, loading, userData }}>
+    <AuthContext.Provider
+      value={{
+        signIn,
+        loading,
+        userData,
+        contacts,
+        setContacts,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

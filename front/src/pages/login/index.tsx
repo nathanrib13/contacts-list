@@ -15,15 +15,28 @@ const Login = () => {
   const { signIn } = useAuth();
   return (
     <Container>
-      <div></div>
+      <div>
+        <h1>Link Up</h1>
+        <h2>Conectando você a quem importa</h2>
+      </div>
 
       <section>
         <form onSubmit={handleSubmit(signIn)}>
           <h1>Login</h1>
           <label htmlFor="">Email</label>
-          <input type="email" id="email" {...register("email")} />
+          <input
+            type="email"
+            id="email"
+            {...register("email")}
+            placeholder="Digite seu email"
+          />
           <label htmlFor="">Senha</label>
-          <input type="password" id="password" {...register("password")} />
+          <input
+            type="password"
+            id="password"
+            {...register("password")}
+            placeholder="Digite sua senha"
+          />
 
           <button type="submit">Entrar</button>
           <span> Ainda nao possui uma conta?</span>

@@ -8,19 +8,26 @@ const Container = styled.main`
 
 
   div{
-    width: 50%;
-  height: 100%; /* Defina a altura desejada para a div */
-  background-image: url('https://img.freepik.com/fotos-premium/dois-macho-amigos-clenching-seu-punho-olhar-telefone-movel-contra-experiencia-azul_23-2148160240.jpg');
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
+  width: 35%;
+  height: 100%; 
+  background-color:  #004AAD;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  gap: 8PX;
+  > h1 {
+    margin-top: -36px;
+   font-size: 58px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  > h2{
+  color: rgba(190, 180, 190, 0.8);
+
+  }
   }
 
-  /* span {  
-    width: 100%;
-    background-color: yellow;
- 
-  } */
   section {
     position: absolute;
     width: 100%;
@@ -33,11 +40,10 @@ const Container = styled.main`
   }
 
   form {
-   position: absolute;
-   right: 12%;
-   width: 25%;
-   height: 65%;
-  
+    position: absolute;
+    right: 20%;
+    width: 25%;
+    height: 65%;
     background-color: white;
     padding: 25px;
     border-radius: 8px;
@@ -46,7 +52,7 @@ const Container = styled.main`
     flex-direction: column;
     > h1 {
       margin-bottom: 26px;
-      
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
     label {
@@ -58,10 +64,14 @@ const Container = styled.main`
       padding: 12px;
       margin-bottom: 19px;
       border-radius: 4px;
+      border: 1px solid blue
+    }
+    input::placeholder{
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     button {
-      background-color: black;
+      background-color: #004AAD;
       color: white;
       padding: 8px 16px;
       border: none;
@@ -71,10 +81,9 @@ const Container = styled.main`
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    span{
-    
-      align-self: center;
-      margin: 36px 0px 14px 0px 
+    span{ 
+      align-self: flex-start;
+      margin: 30px 0px 14px 3px 
     }
 
   }

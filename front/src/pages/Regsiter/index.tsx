@@ -24,6 +24,14 @@ const Register = () => {
 
   return (
     <Container>
+      <div>
+        <h1>Link Up</h1>
+        <h2>
+          {" "}
+          Crie sua conta e tenha o controle total de seus contatos mais
+          importantes
+        </h2>
+      </div>
       <form onSubmit={handleSubmit(registerReq)}>
         <h1>Crie sua conta</h1>
         <label htmlFor="">Nome</label>
@@ -45,7 +53,7 @@ const Register = () => {
           Faça Login
         </button>
       </form>
-      <div></div>
+
       <Toaster position="top-center" />
     </Container>
   );

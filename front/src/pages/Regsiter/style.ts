@@ -3,20 +3,34 @@ import styled from "styled-components";
 const Container = styled.main`
   height: 100vh;
   display: flex;
-
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
 
 
   div{
-    width: 50%;
-  height: 100%; /* Defina a altura desejada para a div */
-  background-image: url('https://img.freepik.com/fotos-gratis/linda-mulher-asiatica-usa-aplicativo-de-smartphone-e-envia-mensagens-em-pontos-de-bate-papo-de-midia-social-no-espaco-da-copia-usa-jaqueta-casual_273609-48643.jpg');
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  }
+  width: 35%;
+  height: 100%; 
+  background-color:  #004AAD;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  gap: 8PX;
 
+  > h1 {
+    margin-top: -36px;
+    font-size: 58px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  > h2{
+  text-align: center;
+  color: rgba(190, 180, 190, 0.8);
+  width: 56%;
+  } 
+
+}
  
   section {
     position: absolute;
@@ -26,15 +40,14 @@ const Container = styled.main`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-image: linear-gradient(to left, blue, transparent);
+  
   }
 
   form {
-   position: absolute;
-   right: 12%;
-   width: 25%;
-   height: 75%;
-  
+    position: absolute;
+    left: 20%;
+    width: 25%;
+    height: 75%;
     background-color: white;
     padding: 25px;
     border-radius: 8px;
@@ -43,7 +56,7 @@ const Container = styled.main`
     flex-direction: column;
     > h1 {
       margin-bottom: 26px;
-      
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
     label {
@@ -52,13 +65,19 @@ const Container = styled.main`
     }
 
     input {
-      padding: 8px;
-      margin-bottom: 14px;
+      padding: 6px;
+      margin-bottom: 19px;
       border-radius: 4px;
+      border: 1px solid blue
     }
 
+    input::placeholder{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
     button {
-      background-color: black;
+      background-color: #004AAD;
       color: white;
       padding: 8px 16px;
       border: none;
@@ -68,10 +87,9 @@ const Container = styled.main`
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    span{
-    
-      align-self: center;
-      margin: 36px 0px 14px 0px 
+    span{ 
+      align-self: flex-start;
+      margin: 30px 0px 14px 3px 
     }
 
   }

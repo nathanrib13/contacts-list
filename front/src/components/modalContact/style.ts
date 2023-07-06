@@ -6,13 +6,15 @@ const ModalWrapper = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const ModalContent = styled.div`
+  width: 23%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   color: black;
@@ -24,6 +26,7 @@ const ModalContent = styled.div`
   > form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
   }
 
   > h2 {
@@ -33,28 +36,35 @@ const ModalContent = styled.div`
   label {
     display: flex;
     flex-direction: column;
-    padding: 4px;
+    color: black;
+    margin-bottom: 8px;
+    gap: 9px;
   }
 
   input {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid blue
+    }
+    input::placeholder{
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
   button {
-    background-color: #ffcc00;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    color: black;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
+    background-color: #004AAD;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      margin-top: 16px;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 8px;
 
     &:hover {
-      background-color: #e6b800;
+      background-color:rgba(80,190,290, 0.6);
     }
   }
 

@@ -26,6 +26,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
       toast.success("contato cadastrado com sucesso");
     } else {
       response = await api.patch(`/users/${userData?.id}`, dataToSend);
+
       toast.success(response?.status);
     }
     setTimeout(() => {
