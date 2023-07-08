@@ -24,14 +24,60 @@ const ModalContent = styled.div`
   border-radius: 13%;
   gap: 20px;
   position: relative; 
+
+  .ProfileCardStyle {
+  width: 45%;
+  height: 55%;
+  position: relative;
+  border-radius: 70%;
+  background-color: #004AAD;
+  padding: 10px;
+}
+
+.ProfileCardStyle img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ProfileCardStyle:hover img {
+  background-color: #333;
+}
+
+.ProfileCardStyle:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.ProfileCardStyle:hover::after {
+  content: "Adicionar foto";
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  color: #333;
+  padding: 10px 10px;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: bold;
+  z-index: 2;
+  cursor: pointer;
+}
+
   
-  > img {
-    margin-top: 15px;
-    width: 200px; /* Defina a largura desejada */
-    height: 200px; /* Defina a altura desejada */
-    border-radius: 50%;
-    object-fit: cover;
-     }
 
   > div {
     width: 100%;
@@ -87,10 +133,79 @@ const ModalContent = styled.div`
       }
     >button:hover {
       transform: rotate(180deg);
-  background-color: #004AAD;
-  color: #fff;
+    background-color: #004AAD;
+    color: #fff;
         
       }
+    > div.modalDeleteContact{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7); 
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 13%;
+  
+      > span.closeModal{
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #D9D9D9;
+      top: 27%; 
+      right: 17%; 
+      padding: 10px 15px;
+      border: none;
+      border-radius: 100%;
+      cursor: pointer;
+
+      }
+
+  > div {
+    background-color: #D9D9D9;
+    padding: 20px;
+    width: 60%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    justify-content: space-between;
+    align-items: center;
+      
+  
+    > h2{
+      font-weight: 400;
+      font-size: 1.4em;
+    }
+    > p {
+      padding: 4px;
+      border-radius: 4px;
+      font-weight: 400;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    > button {
+      background-color: red;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      margin-top: 16px;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 8px;
+      width: 100%;
+
+    &:hover {
+      background-color:rgba(190,0,0, 0.6);
+    }
+    }
+  }
+
+}
 }
 
 

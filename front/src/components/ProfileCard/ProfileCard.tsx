@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProfileCardStyle } from "./style";
-import Modal from "../modalContact/ModalNewContact";
+import ModalEditUser from "../modalEditUser/ModalEditUser";
 
 interface UserData {
   name: string;
@@ -9,10 +9,6 @@ interface UserData {
 }
 const ProfileCard = ({ userData }: { userData: UserData }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
 
   const closeModal = () => {
     setModalOpen(false);
@@ -27,16 +23,15 @@ const ProfileCard = ({ userData }: { userData: UserData }) => {
       <div>
         <div>
           <h2>Bem vindo, {userData?.name}</h2>
-          {/* <p onClick={openModal}>🖊️</p> */}
         </div>
         <ul>
           <li>Email: {userData?.email}</li>
           <li>Telefone: {userData?.phone}</li>
         </ul>
 
-        <Modal
-          isOpen={isModalOpen}
-          onClose={closeModal}
+        <ModalEditUser
+          openEditUserModal={isModalOpen}
+          closeEditUserModal={closeModal}
           title="Editar perfil"
         />
       </div>

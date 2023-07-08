@@ -19,6 +19,7 @@ const ModalViewContact: React.FC<ModalProps> = ({
   contact,
 }) => {
   const { setContacts } = useContext(AuthContext);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const handleDeleteContact = async (contactId: number) => {
     try {
@@ -27,6 +28,7 @@ const ModalViewContact: React.FC<ModalProps> = ({
         setContacts((prevContacts: Contact[]) =>
           prevContacts.filter((contact: Contact) => contact.id !== contactId)
         );
+        toast.success("contato exlcuido com sucesso");
       }
     } catch (error) {
       console.error("Erro ao excluir contato:", error);
@@ -36,14 +38,16 @@ const ModalViewContact: React.FC<ModalProps> = ({
   return (
     <ModalWrapper style={{ display: isOpen ? "flex" : "none" }}>
       <ModalContent>
-        <img src="https://img.freepik.com/fotos-premium/pessoa-usando-telefone-celular-sobre-fundo-isolado_1368-174417.jpg?w=2000" />
+        <div className="ProfileCardStyle">
+          <img src="https://wp-content.bluebus.com.br/wp-content/uploads/2017/03/31142426/twitter-novo-avatar-padrao-2017-bluebus-660x440.png" />
+        </div>
         <div>
           <div>
             <p>{contact.category}</p>
             <div>
               <EditOutlinedIcon />
               <DeleteForeverOutlinedIcon
-                onClick={() => handleDeleteContact(contact.id)}
+                onClick={() => setIsDeleteModalOpen(!isDeleteModalOpen)}
               />
             </div>
           </div>
@@ -59,6 +63,26 @@ const ModalViewContact: React.FC<ModalProps> = ({
             </li>
           </ul>
           <button onClick={onClose}>X</button>
+          {isDeleteModalOpen ? (
+            <div className="modalDeleteContact">
+              <div>
+                <h2>Você está prestes a exlcuir: </h2>
+                <p>{contact.name}</p>
+                <button onClick={() => handleDeleteContact(contact.id)}>
+                  {" "}
+                  Excluir
+                </button>
+              </div>
+              <span
+                className="closeModal"
+                onClick={() => setIsDeleteModalOpen(false)}
+              >
+                X
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         <Toaster position="top-center" />

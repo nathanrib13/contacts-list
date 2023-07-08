@@ -34,21 +34,23 @@ const HeaderStyled = styled.header`
     background-color: #fff;
     border: 2px solid black;
     padding: 15px;
-    width: 150px;
-    height: auto;
+    width: 18%;
+    height: 35%;
+    border-radius: 8px;
     z-index: 27;
+    
 
     > ul {
       margin-top: 20%;
       display: flex;
       align-items: flex-end;
       flex-direction: column;
-      gap: 9px;
+      gap: 25px;
 
       > li {
         padding: 4px;
         width: 100%;
-        border-bottom: 0.5px solid black;
+        border-bottom: 0.5px solid #004AAD;
         cursor: pointer;
       }
       > li:hover{

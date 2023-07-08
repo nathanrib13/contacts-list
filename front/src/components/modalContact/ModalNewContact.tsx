@@ -11,9 +11,16 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onAddContact: any;
 }
 
-const ModalNewContact: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
+const ModalNewContact: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  title,
+  onAddContact,
+}) => {
   const { userData } = useContext(AuthContext);
   const { register, handleSubmit } = useForm<NewContact>({
     resolver: zodResolver(newContactSchema),
@@ -21,7 +28,12 @@ const ModalNewContact: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
 
   const createContact = async (data: NewContact) => {
     const response = await api.post(`/contacts/${userData?.id}`, data);
-    if (response.status == 201) toast.success("Contato criado com sucesso");
+    if (response.status === 201) {
+      const newContact = await response;
+      console.log(newContact.data);
+      onAddContact(newContact.data); // Chamando a função para adicionar o novo contato no componente pai
+      toast.success("Contato criado com sucesso");
+    }
 
     // setTimeout(() => {
     //   onClose();

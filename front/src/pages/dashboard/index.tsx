@@ -47,12 +47,6 @@ const Dashboard = () => {
       setContactsToRender(filtered);
     }
   }, [searchText, contactsInAlphabeticalOrder]);
-  // useEffect(() => {
-  //   const filtered = contactsToRender.filter((contact) =>
-  //     contact.name.toLowerCase().includes(searchText)
-  //   );
-  //   setContactsToRender(filtered);
-  // }, [searchText, contactsToRender]);
 
   const openModal = () => {
     setModalOpen(true);
@@ -89,6 +83,10 @@ const Dashboard = () => {
     return classes[category] || "";
   };
 
+  const addContact = (newContact) => {
+    setContactsToRender([...contactsToRender, newContact]);
+  };
+
   const uniqueCategories = [
     ...new Set(contacts?.map((contact: Contact) => contact.category)),
   ];
@@ -105,6 +103,7 @@ const Dashboard = () => {
         isOpen={isModalOpen}
         onClose={closeModal}
         title="Novo Contato"
+        onAddContact={addContact}
       />
       <section>
         <div>
@@ -136,11 +135,11 @@ const Dashboard = () => {
           <h2>ALL CONTACTS</h2>
           <button onClick={openModal}> + New Contact</button>
         </div>
-        {contacts && contacts.length === 0 ? (
-          <section>
+        {contactsToRender?.length == 0 ? (
+          <div className="noContacts">
             <h2>Nenhum contato disponível.</h2>
             <p>Cadastre um novo conta em sua lista</p>
-          </section>
+          </div>
         ) : (
           contactsToRender.map((contact: Contact) => (
             <ContactCard key={contact.id} contact={contact} />

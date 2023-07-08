@@ -120,6 +120,14 @@ const Container = styled.section`
      >p {
       color: #000;
     }
+
+    div.noContacts{
+      background-color: #D9D9D9;
+      width: 35%;
+      border-radius: 25px;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
 `;
