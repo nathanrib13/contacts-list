@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CreateNeWContactStyle from "./Style";
-import Modal from "../modalContact/ModalContact";
+import Modal from "../modalContact/ModalNewContact";
 
 const CreateNewContact = () => {
   const [isModalOpen, setModalOpen] = useState(false);

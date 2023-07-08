@@ -72,13 +72,34 @@ const ModalContent = styled.div`
     margin-top: 8px;
 
     &:hover {
-      background-color:rgba(80,190,290, 0.6);
+      background-color:rgba(0,0,290, 0.4);
+      color: black;
     }
+  }
+  button.deleteUser{
+    background-color: red;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      margin-top: 16px;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+
+    &:hover {
+      background-color:rgba(190,0,0, 0.6);
+    }
+
   }
 
   .button-container {
     display: flex;
     justify-content: space-between;
   }
+
+
 `;
 export { ModalContent, ModalWrapper };

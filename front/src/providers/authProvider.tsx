@@ -5,6 +5,7 @@ import { loginData } from "./validator";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { Contact } from "../pages/Dashboard";
+import { Toaster, toast } from "sonner";
 
 interface IAuthProviderProps {
   children: ReactNode;
@@ -71,7 +72,8 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
       localStorage.setItem("contact-list:token", token);
       navigate("dashboard");
     } catch (error) {
-      console.log(error);
+      if (error.response.status) toast.error("Login ou senha inválidos");
+      console.log(error.response.status);
     }
   };
 
@@ -86,6 +88,7 @@ const AuthProvider = ({ children }: IAuthProviderProps) => {
       }}
     >
       {children}
+      <Toaster position="top-center" richColors />
     </AuthContext.Provider>
   );
 };

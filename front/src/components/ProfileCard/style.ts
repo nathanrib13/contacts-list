@@ -5,12 +5,12 @@ const ProfileCardStyle = styled.div`
   width: 75%;
   margin: 22px 55px;
   display: flex;
-  gap: 25px;
+  gap: 7%;
   align-items: center;
 
   > img {
-    width: 200px; 
-    height: 200px; 
+    width: 210px; 
+    height: 210px; 
     border-radius: 50%;
     object-fit: cover;
   }
@@ -23,6 +23,7 @@ const ProfileCardStyle = styled.div`
     justify-content: space-between;
     width: 75%;
     min-width: 250px;
+    gap: 15px;
   
     align-items: center;
     border-radius: 12px;

@@ -50,6 +50,11 @@ const ModalContent = styled.div`
         > div{
           display: flex;
           gap: 6px;
+          > svg {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+          }
       }
     }
     > ul {

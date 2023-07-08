@@ -21,6 +21,9 @@ class Contact {
   @Column({ length: 12 })
   phone: string;
 
+  @Column({ length: 30 })
+  category: string;
+
   @CreateDateColumn({ type: "date" })
   createdAt: string;
 

@@ -39,7 +39,7 @@ const ModalViewContact: React.FC<ModalProps> = ({
         <img src="https://img.freepik.com/fotos-premium/pessoa-usando-telefone-celular-sobre-fundo-isolado_1368-174417.jpg?w=2000" />
         <div>
           <div>
-            <p>Work</p>
+            <p>{contact.category}</p>
             <div>
               <EditOutlinedIcon />
               <DeleteForeverOutlinedIcon

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProfileCardStyle } from "./style";
-import Modal from "../modalContact/ModalContact";
+import Modal from "../modalContact/ModalNewContact";
 
 interface UserData {
   name: string;
@@ -27,7 +27,7 @@ const ProfileCard = ({ userData }: { userData: UserData }) => {
       <div>
         <div>
           <h2>Bem vindo, {userData?.name}</h2>
-          <p onClick={openModal}>🖊️</p>
+          {/* <p onClick={openModal}>🖊️</p> */}
         </div>
         <ul>
           <li>Email: {userData?.email}</li>

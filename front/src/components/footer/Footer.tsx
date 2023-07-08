@@ -5,9 +5,11 @@ const Footer = () => {
   return (
     <FooterStyled>
       <ul>
-        <li>About us</li>
+        <li>About</li>
         <li>Work with us</li>
         <li>Blog</li>
+        <li>FAQ</li>
+        <li>SAC</li>
       </ul>
       <div>
         <p>Contact List by Nathan Ribero </p>

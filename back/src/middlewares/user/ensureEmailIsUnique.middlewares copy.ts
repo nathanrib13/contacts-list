@@ -27,9 +27,13 @@ const ensureEmailIsUniqueMiddleware = async (
     },
   });
 
-  if (findMail || findPhone) {
-    throw new AppError("Email or Phone already exists", 409);
+  if (findMail && findMail.id !== req.user.id) {
+    throw new AppError("Email  already exists", 409);
   }
+  if (findPhone && findPhone.id !== req.user.id) {
+    throw new AppError("Email  already exists", 409);
+  }
+  
 
   return next();
 };

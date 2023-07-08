@@ -5,6 +5,7 @@ const createContactSchema = z.object({
   name: z.string().max(65),
   email: z.string().email().max(75),
   phone: z.string().max(12),
+  category: z.string().max(30),
 });
 
 const contactSchemaReturn = createContactSchema.extend({

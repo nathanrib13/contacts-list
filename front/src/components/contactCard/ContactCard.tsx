@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Contact } from "../../pages/Dashboard";
 import { ContactCardStyle } from "./style";
-import ModalOnlyContact from "../modalContact/ModalOnlyContact";
 import ModalViewContact from "../modalViewContact/ModalContact";
+import { Category } from "../../providers/validator";
 
 const ContactCard = ({ contact }: { contact: Contact }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -15,6 +15,17 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
     setModalOpen(false);
   };
 
+  const classes = {
+    Family: "green",
+    Friends: "purple",
+    Work: "blue",
+    Service: "red",
+  };
+
+  const getCategoryClass = (category: Category) => {
+    return classes[category] || "";
+  };
+
   return (
     <ContactCardStyle>
       <ModalViewContact
@@ -23,10 +34,10 @@ const ContactCard = ({ contact }: { contact: Contact }) => {
         contact={contact}
       />
       <ul onClick={openModal}>
-        <li> {contact.name}</li>
-        <li> Work</li>
-        {/* <li>Email: {contact.email}</li>
-        <li>Phone: {contact.phone}</li> */}
+        <p> {contact.name}</p>
+        <li className={getCategoryClass(contact.category)}>
+          {contact.category}
+        </li>
       </ul>
     </ContactCardStyle>
   );

@@ -19,7 +19,7 @@ const Container = styled.main`
   gap: 8PX;
   > h1 {
     margin-top: -36px;
-   font-size: 58px;
+    font-size: 58px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   > h2{
