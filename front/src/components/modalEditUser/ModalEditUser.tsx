@@ -50,10 +50,9 @@ const ModalEditUser: React.FC<ModalProps> = ({
     if (response.status == 200) {
       toast.success("usuário editado com sucesso!");
     }
-
     setTimeout(() => {
-      closeEditUserModal();
-    }, 1500);
+      location.reload();
+    }, 1000);
   };
 
   return (
@@ -65,7 +64,7 @@ const ModalEditUser: React.FC<ModalProps> = ({
             Nome:
             <input
               type="text"
-              placeholder={userData?.name}
+              defaultValue={userData?.name}
               {...register("name")}
             />
           </label>
@@ -73,7 +72,7 @@ const ModalEditUser: React.FC<ModalProps> = ({
             Telefone:
             <input
               type="text"
-              placeholder={userData?.phone}
+              defaultValue={userData?.phone}
               {...register("phone")}
             />
           </label>
@@ -81,7 +80,7 @@ const ModalEditUser: React.FC<ModalProps> = ({
             Email:
             <input
               type="text"
-              placeholder={userData?.email}
+              defaultValue={userData?.email}
               {...register("email")}
             />
           </label>

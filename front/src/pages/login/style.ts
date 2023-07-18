@@ -79,6 +79,9 @@ const Container = styled.main`
       margin-top: 16px;
       cursor: pointer;
       font-family: Arial, Helvetica, sans-serif;
+      &:hover {
+      background-color:rgba(80,190,290, 0.6);
+    }
     }
 
     span{ 

@@ -15,7 +15,10 @@ const Register = () => {
   const registerReq = async (data: registernData) => {
     try {
       await api.post("/users", data);
-      navigate("/");
+      toast.success("usuário editado com sucesso!");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     } catch (error) {
       console.log(error);
       toast.error("nao foi possivel criar sua conta");

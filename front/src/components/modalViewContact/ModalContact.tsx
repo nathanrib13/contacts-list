@@ -6,6 +6,8 @@ import { Toaster, toast } from "sonner";
 import { Contact } from "../../pages/Dashboard";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+import { useForm } from "react-hook-form";
+import { NewContact } from "../../providers/validator";
 
 interface ModalProps {
   isOpen: boolean;
@@ -20,6 +22,17 @@ const ModalViewContact: React.FC<ModalProps> = ({
 }) => {
   const { setContacts } = useContext(AuthContext);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const { register, handleSubmit } = useForm<NewContact>();
+
+  const updateContact = async (data: NewContact) => {
+    const thisContactId = contact.id;
+    const response = await api.patch(`contacts/${thisContactId}`, data);
+    if (response.status === 200) {
+      toast.success("contato editado com sucesso");
+      location.reload();
+    }
+  };
 
   const handleDeleteContact = async (contactId: number) => {
     try {
@@ -35,17 +48,23 @@ const ModalViewContact: React.FC<ModalProps> = ({
     }
   };
 
+  const openToastPhoto = () => {
+    toast.message("Coming soon... 😜  ");
+  };
+
   return (
     <ModalWrapper style={{ display: isOpen ? "flex" : "none" }}>
       <ModalContent>
-        <div className="ProfileCardStyle">
+        <div className="ProfileCardStyle" onClick={() => openToastPhoto()}>
           <img src="https://wp-content.bluebus.com.br/wp-content/uploads/2017/03/31142426/twitter-novo-avatar-padrao-2017-bluebus-660x440.png" />
         </div>
         <div>
           <div>
             <p>{contact.category}</p>
             <div>
-              <EditOutlinedIcon />
+              <EditOutlinedIcon
+                onClick={() => setIsUpdateModalOpen(!isUpdateModalOpen)}
+              />
               <DeleteForeverOutlinedIcon
                 onClick={() => setIsDeleteModalOpen(!isDeleteModalOpen)}
               />
@@ -79,6 +98,60 @@ const ModalViewContact: React.FC<ModalProps> = ({
               >
                 X
               </span>
+            </div>
+          ) : (
+            ""
+          )}
+          {isUpdateModalOpen ? (
+            <div className="modalUpdateContact">
+              <form
+                className="formEditContact"
+                onSubmit={handleSubmit(updateContact)}
+              >
+                <label>
+                  Nome:
+                  <input
+                    type="text"
+                    defaultValue={contact.name}
+                    {...register("name")}
+                  />
+                </label>
+                <label>
+                  Telefone:
+                  <input
+                    type="text"
+                    defaultValue={contact.phone}
+                    {...register("phone")}
+                  />
+                </label>
+                <label>
+                  Email:
+                  <input
+                    type="text"
+                    defaultValue={contact.email}
+                    {...register("email")}
+                  />
+                </label>
+                <label>
+                  Category:
+                  <select {...register("category")} required>
+                    <option disabled selected hidden>
+                      Selecione uma Categoria
+                    </option>
+                    <option value="Family">Family</option>
+                    <option value="Friends">Friends</option>
+                    <option value="Work">Work</option>
+                    <option value="Service">Service</option>
+                  </select>
+                </label>
+                <button type="submit">Enviar</button>
+                <button
+                  type="button"
+                  onClick={() => setIsUpdateModalOpen(!isUpdateModalOpen)}
+                >
+                  Fechar
+                </button>
+              </form>
             </div>
           ) : (
             ""

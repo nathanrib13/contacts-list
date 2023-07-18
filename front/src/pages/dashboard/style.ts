@@ -109,7 +109,9 @@ const Container = styled.section`
     border-radius: 12px;
     border:  none;
     padding: 12px;
-
+    &:hover {
+      background-color:rgba(80,190,290, 0.6);
+    }
     }
       }
   

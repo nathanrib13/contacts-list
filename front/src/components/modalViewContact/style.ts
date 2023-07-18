@@ -23,11 +23,14 @@ const ModalContent = styled.div`
   padding: 20px;
   border-radius: 13%;
   gap: 20px;
-  position: relative; 
+  position: fixed; 
+  z-index: 99;
 
   .ProfileCardStyle {
   width: 45%;
   height: 55%;
+  min-width: 45%;
+  min-height: 55%;
   position: relative;
   border-radius: 70%;
   background-color: #004AAD;
@@ -76,7 +79,73 @@ const ModalContent = styled.div`
   z-index: 2;
   cursor: pointer;
 }
+.modalUpdateContact{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7); 
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 13%;
+> form {
+  background-color: #D9D9D9;
+  padding: 25px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
 
+  > h2 {
+    text-align: center;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    margin-bottom: 8px;
+    gap: 9px;
+  }
+
+  input {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid blue
+    }
+    input::placeholder{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    select {
+      padding: 12px;
+      border-radius: 4px;
+      border: 1px solid blue
+    }
+    
+
+  button {
+    background-color: #004AAD;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      margin-top: 16px;
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+
+    &:hover {
+      background-color:rgba(80,190,290, 0.6);
+    }
+  }
+
+}
+}
   
 
   > div {
