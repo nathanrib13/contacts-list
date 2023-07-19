@@ -15,7 +15,7 @@ const Register = () => {
   const registerReq = async (data: registernData) => {
     try {
       await api.post("/users", data);
-      toast.success("usuário editado com sucesso!");
+      toast.success("usuário criado com sucesso!");
       setTimeout(() => {
         navigate("/");
       }, 1000);
@@ -56,8 +56,6 @@ const Register = () => {
           Faça Login
         </button>
       </form>
-
-      <Toaster position="top-center" />
     </Container>
   );
 };
